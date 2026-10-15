@@ -1,0 +1,30 @@
+param_name,value,unit,source_ref,verified_in_text,note
+girr_gamma_across_ccy,0.5,corr,MAR21.50,Y,Across GIRR buckets (currencies)
+girr_rho_same_tenor_diff_curve,0.999,corr,MAR21.45,Y,Only matters with >1 curve per currency; single curve used here
+girr_rho_diff_tenor_diff_curve_mult,0.999,mult,MAR21.47,Y,Not exercised: single curve per currency
+girr_theta,0.03,param,MAR21.46 fn13,Y,"rho_kl = max(exp(-theta*|Tk-Tl|/min(Tk,Tl)), 40%)"
+girr_rho_floor,0.4,corr,MAR21.46 fn13,Y,Floor of the tenor correlation formula
+girr_rw_inflation,0.016,rw,MAR21.43,Y,NOT USED: no inflation instruments
+girr_rw_xccy_basis,0.016,rw,MAR21.43,Y,NOT USED: no cross-currency basis modelled
+girr_rw_sqrt2_option,0.0,flag,MAR21.44,Y,"Bank-discretion switch (1 = apply /sqrt2 for specified ccys EUR USD GBP AUD JPY SEK CAD + reporting ccy). Default here: 0 (NOT applied, conservative) - see README"
+fx_rw,0.15,rw,MAR21.87,Y,Relative risk weight for all FX delta sensitivities
+fx_rw_sqrt2_option,0.0,flag,MAR21.88,Y,"Bank-discretion switch (1 = apply for specified pairs vs USD). Default here: 0 (NOT applied, conservative) - see README"
+fx_gamma_across_buckets,0.6,corr,MAR21.89,Y,Across FX buckets
+scen_high_mult,1.25,mult,MAR21.6(2),Y,"High: rho,gamma * 1.25, capped at 100%"
+scen_high_cap,1.0,cap,MAR21.6(2),Y,Cap for high scenario
+scen_low_a,2.0,param,MAR21.6(3),Y,"Low: max(2*rho - 100%, 75%*rho)"
+scen_low_b,0.75,param,MAR21.6(3),Y,"Low: max(2*rho - 100%, 75%*rho)"
+curv_corr_power,2.0,power,MAR21.100/21.101,Y,Curvature rho and gamma = delta value squared; scenarios (MAR21.6) are applied AFTER squaring (GIRR gamma 50%^2 = 25%)
+curv_girr_rw_rule,1.0,mult,MAR21.99,Y,GIRR curvature shock = parallel shift of the whole curve by max delta RW (the 0.25y 1.7%) x this multiplier
+curv_scalar_fx_options,1.5,scalar,MAR21.98,Y,NOT USED: FX curvature not computed (no FX options)
+vega_rw_sigma,0.55,rw,MAR21.92 fn24,Y,"RW_k = min(RW_sigma * sqrt(LH)/sqrt(10), 100%)"
+vega_lh_girr_days,60,days,MAR21.92 Table 13,Y,Regulatory liquidity horizon for GIRR vega
+vega_rw_cap,1.0,cap,MAR21.92 fn24,Y,100% cap (Table 13 gives GIRR 100%)
+vega_alpha,0.01,param,MAR21.93,Y,"rho_option = exp(-alpha*|Tk-Tl|/min(Tk,Tl)); same form for the underlying maturities"
+vega_gamma_across_ccy,0.5,corr,MAR21.95,Y,Across currencies: same gamma as GIRR delta (50%)
+es_confidence,0.975,prob,MAR33.3,Y,One-tailed
+es_base_horizon_days,10,days,MAR33.4(2),Y,Base horizon T
+lh_girr_specified_ccy,10,days,MAR33.12 Table 2,Y,IR specified ccys (EUR USD GBP AUD JPY SEK CAD + domestic)
+lh_girr_unspecified_ccy,20,days,MAR33.12 Table 2,Y,IR unspecified ccys
+lh_fx_specified_pair,10,days,MAR33.12 Table 2,Y,FX specified pairs
+lh_fx_other_pair,20,days,MAR33.12 Table 2,Y,FX other pairs

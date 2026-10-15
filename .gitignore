@@ -1,0 +1,21 @@
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# rebuilt by run_all.py in seconds
+data/*.db
+
+# downloaded inputs: fetch with  python scripts/fetch_data.py [--standard]
+# (the BCBS PDF and the text extracted from it are a BIS publication; FRED terms apply to the CSVs)
+refs/bcbs_d457/
+refs/fred/*.csv
+refs/fred/*.part
+
+# editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

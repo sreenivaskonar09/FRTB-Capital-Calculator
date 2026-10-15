@@ -1,0 +1,7 @@
+pandas
+numpy
+scipy
+openpyxl
+matplotlib
+pytest
+pypdf
